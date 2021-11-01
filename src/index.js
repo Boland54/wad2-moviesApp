@@ -10,15 +10,6 @@ const App = () => {
   return (
     <BrowserRouter>
     <SiteHeader />      {/* New Header  */}
-    
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/movies/favorites">Favorites</Link>
-        </li>
-      </ul>
       <Switch>
       <Route path="/reviews/:id" component={MovieReviewPage} />
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
