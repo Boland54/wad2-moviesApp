@@ -36,5 +36,9 @@ describe("Movie Details Page", () => {
           });
         });
     });
+
+      it("should display movie posters on the left side", () => {
+          cy.get('img').should('have.css', 'text-align', 'left');
+      });
     });
   });
