@@ -34,5 +34,30 @@ describe("Navigation", () => {
       cy.url().should("include", `/movies/${movies[0].id}`);
       cy.get("h3").contains(movies[0].title);
     });
+    describe("From the Favorites page", () => {
+      beforeEach(() => {
+        cy.get("button[aria-label='add to favorites']").eq(0).click();
+        cy.get("button[aria-label='add to favorites']").eq(1).click();
+        cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
+      });
+      it("should navigate to the movies detail page and change the browser URL", () => {
+        cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
+        cy.url().should("include", `/movies/${movies[0].id}`);
+        cy.get("h3").contains(movies[0].title);
+      });
+    });
+    // describe("The forward/backward links", () => {
+    //   beforeEach(() => {
+    //     cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
+    //   });
+    //   it("should navigate backward and forward between the movies detail page and the Discover page.", () => {
+    //     cy.get("button[aria-label='go back'").click();
+    //     cy.get("h3").contains("Discover Movies");
+    //     cy.url().should("not.include", `/movies/${movies[0].id}`);
+    //     cy.get("button[aria-label='go forward'").click();
+    //     cy.url().should("include", `/movies/${movies[0].id}`);
+    //     cy.get("h3").contains(movies[0].title);
+    //   });
+    // });
   });
 });
