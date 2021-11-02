@@ -108,9 +108,16 @@ describe("Home Page ", () => {
             cy.wrap($card).find("p").contains(matchingMovies[index].title);
           });
         })
+      })
+        describe("select a favourite movie", () => {
+          it("A movie should be slected as favourite", () =>{
+            cy.get("button[aria-label='add to favorites']").eq(1).click();
+            cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
+          })
+        })
     });
  });
 });
-});
+
 
 
