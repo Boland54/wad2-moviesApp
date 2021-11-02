@@ -75,7 +75,7 @@ describe("Home Page ", () => {
       });
 
    })
-   
+
    describe("By movie genre", () => {
     it("should display movies with the specified genre only", () => {
        const selectedGenreId = 35;
@@ -91,6 +91,24 @@ describe("Home Page ", () => {
          cy.wrap($card).find("p").contains(matchingMovies[index].title);
        });
      });
+
+     describe("By movie title", () => {
+        it("should only display movies with boss in the title", () => {
+          let searchString = "boss";
+          const selectedGenreText = "Comedy";
+          cy.get("#genre-select").click();
+          cy.get("li").contains(selectedGenreText).click();
+          let matchingMovies = filterByTitle(movies, searchString);
+          cy.get("#filled-search").clear().type(searchString); // Enter m in text box
+          cy.get(".MuiCardHeader-content").should(
+            "have.length",
+            matchingMovies.length
+          );
+          cy.get(".MuiCardHeader-content").each(($card, index) => {
+            cy.wrap($card).find("p").contains(matchingMovies[index].title);
+          });
+        })
+    });
  });
 });
 });
