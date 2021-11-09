@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import { getUpcomingMovies } from "../api/tmdb-api";
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const UpcomingMoviePage = (props) => {
   const [movies, setMovies] = useState([]);
@@ -25,7 +26,9 @@ const UpcomingMoviePage = (props) => {
     <PageTemplate
       title='Upcoming Movies'
       movies={movies}
-      selectFavorite={addToFavorites}
+      action={(movie) => {
+        return <PlaylistAddIcon movie={movie} />
+      }}
     />
   );
 };
