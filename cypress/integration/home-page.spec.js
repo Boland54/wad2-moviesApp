@@ -24,10 +24,7 @@ describe("Home Page ", () => {
     cy.visit("/")
   });
 
-  describe("Home Page", () => {
-    beforeEach(() => {
-      cy.visit("/");
-    });
+ 
   
     describe("Base test", () => {
       it("displays page header", () => {
@@ -35,7 +32,7 @@ describe("Home Page ", () => {
         cy.get("h1").contains("Filter the movies");
       });
     });
-  })
+  
 
   
   describe("Filtering", () => {
@@ -72,7 +69,7 @@ describe("Home Page ", () => {
         cy.get("#filled-search").clear().type(searchString); // Enter m in text box
         cy.get(".MuiCardHeader-content").should("have.length", 0);
       });
-
+    });
    })
 
    describe("By movie genre", () => {
@@ -90,6 +87,7 @@ describe("Home Page ", () => {
          cy.wrap($card).find("p").contains(matchingMovies[index].title);
        });
      });
+<<<<<<< HEAD
 
      describe("By movie genre and title", () => {
       it("should display movies with the specified genre and title substring only", () => {
@@ -116,9 +114,30 @@ describe("Home Page ", () => {
             cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
           })
         })
+=======
     });
- });
-});
+      describe("By movie genre and title", () => {
+        it("should display movies with the specified genre and title substring only", () => {
+          const selectedGenreId = 35;
+          const selectedGenreText = "Comedy";
+          const genreMatchingMovies = filterByGenre(movies, selectedGenreId);
+          let searchString = "o";
+          let matchingMovies = filterByTitle(genreMatchingMovies, searchString);
+          cy.get("#filled-search").clear().type(searchString); // Enter m in text box 
+          cy.get("#genre-select").click();
+          cy.get("li").contains(selectedGenreText).click();
+          cy.get(".MuiCardHeader-content").should(
+            "have.length",
+            matchingMovies.length
+          );
+          cy.get(".MuiCardHeader-content").each(($card, index) => {
+            cy.wrap($card).find("p").contains(matchingMovies[index].title);
+          });
+        });
+      });
+>>>>>>> master
+    });
+ 
 
 
 

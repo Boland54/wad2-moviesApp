@@ -1,3 +1,5 @@
+import Avatar from "@material-ui/core/Avatar";
+import { Link } from "react-router-dom";
 import React, { useContext  } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,12 +12,10 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
-import { Link } from "react-router-dom";
-import Avatar from "@material-ui/core/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -25,8 +25,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MovieCard({ movie, action }) {  const classes = useStyles();
-  const { favorites, addToFavorites } = useContext(MoviesContext);
+export default function MovieCard({movie, action}) {
+  const classes = useStyles();
+  const { favorites } = useContext(MoviesContext);
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
@@ -34,14 +35,12 @@ export default function MovieCard({ movie, action }) {  const classes = useStyle
     movie.favorite = false
   }
 
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  };
+
+
 
   return (
     <Card className={classes.card}>
-    <CardHeader
+         <CardHeader
       className={classes.header}
       avatar={
         movie.favorite ? (
@@ -55,7 +54,8 @@ export default function MovieCard({ movie, action }) {  const classes = useStyle
           {movie.title}{" "}
         </Typography>
       }
-    />      <CardMedia
+    />
+      <CardMedia
         className={classes.media}
         image={
           movie.poster_path
@@ -80,8 +80,13 @@ export default function MovieCard({ movie, action }) {  const classes = useStyle
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
+<<<<<<< HEAD
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
+=======
+      {action (movie)}
+     <Link to={`/movies/${movie.id}`}>
+>>>>>>> master
         <Button variant="outlined" size="medium" color="primary">
           More Info ...
         </Button>
