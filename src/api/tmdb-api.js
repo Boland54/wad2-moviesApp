@@ -75,11 +75,7 @@ export const getMovie = (args) => {
   export const getUpcomingMovies = () => {
     return fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-<<<<<<< HEAD
-    ).then((response) => {
-=======
       ).then((response) => {
->>>>>>> master
       if (!response.ok) {
         throw new Error(response.json().message);
       }
