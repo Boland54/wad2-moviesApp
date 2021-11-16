@@ -24,10 +24,7 @@ describe("Home Page ", () => {
     cy.visit("/")
   });
 
-  describe("Home Page", () => {
-    beforeEach(() => {
-      cy.visit("/");
-    });
+ 
   
     describe("Base test", () => {
       it("displays page header", () => {
@@ -35,7 +32,7 @@ describe("Home Page ", () => {
         cy.get("h1").contains("Filter the movies");
       });
     });
-  })
+  
 
   
   describe("Filtering", () => {
@@ -64,15 +61,16 @@ describe("Home Page ", () => {
          cy.wrap($card).find("p").contains(matchingMovies[index].title);
        });
      });
-     it("should display no movies when the search string is xyz", () => {
-      // Do a second test for certainty!
-      let searchString = "xyz";
-      let matchingMovies = filterByTitle(movies, searchString);
-      cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-      cy.get(".MuiCardHeader-content").should("have.length", 0);
+     it("should only display movies with xyz in the title", () => {
+        let searchString = "xyz";
+        let matchingMovies = filterByTitle(movies, searchString);
+        cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
+        cy.get(".MuiCardHeader-content").should(
+          "have.length",
+          matchingMovies.length
+        );
+      });
     });
-
-
    })
 
    describe("By movie genre", () => {
@@ -90,25 +88,7 @@ describe("Home Page ", () => {
          cy.wrap($card).find("p").contains(matchingMovies[index].title);
        });
      });
-
-     describe("By movie title", () => {
-        it("should only display movies with boss in the title", () => {
-          let searchString = "boss";
-          const selectedGenreText = "Comedy";
-          cy.get("#genre-select").click();
-          cy.get("li").contains(selectedGenreText).click();
-          let matchingMovies = filterByTitle(movies, searchString);
-          cy.get("#filled-search").clear().type(searchString); // Enter m in text box
-          cy.get(".MuiCardHeader-content").should(
-            "have.length",
-            matchingMovies.length
-          );
-          cy.get(".MuiCardHeader-content").each(($card, index) => {
-            cy.wrap($card).find("p").contains(matchingMovies[index].title);
-          });
-        })
-      })
-
+    });
       describe("By movie genre and title", () => {
         it("should display movies with the specified genre and title substring only", () => {
           const selectedGenreId = 35;
@@ -128,36 +108,4 @@ describe("Home Page ", () => {
           });
         });
       });
-
-      
-      describe("Selecting favourites", () => {
-        it("should display an avatar for tagged movies and list them on the Favourites page", () => {
-          cy.get(".MuiAvatar-circle").should(
-            "have.length",
-            0
-          );   
-          cy.get("button[aria-label='add to favorites']").eq(0).click();
-          cy.get("button[aria-label='add to favorites']").eq(2).click();
-          cy.get(".MuiAvatar-circle").should(
-            "have.length",
-            2
-          );  
-          // Are correct cards tagged?
-          cy.get(".MuiCardHeader-root").eq(0).find(".MuiAvatar-circle")    
-          cy.get(".MuiCardHeader-root").eq(2).find(".MuiAvatar-circle")    
-          // Check the Favourites page.
-          cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click();
-          cy.get(".MuiCardHeader-content").should(
-            "have.length",
-            2
-          );
-          cy.get(".MuiCardHeader-content").eq(0).find("p").contains(movies[0].title)
-          cy.get(".MuiCardHeader-content").eq(1).find("p").contains(movies[2].title)
-        });
-      });
     });
- });
-});
-
-
-
