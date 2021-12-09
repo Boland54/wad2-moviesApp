@@ -13,6 +13,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import TvDetailPage from "./pages/tvDetailsPage";
 import TvPage from './pages/tvPage';
+import FavoriteTvShowPage from "./pages/favoriteTvShowPage"; // NEW
 
 
 
@@ -35,6 +36,7 @@ const App = () => {
     <MoviesContextProvider>
             {" "}
       <Switch>
+      <Route exact path="/tv/tvfavorites" component={FavoriteTvShowPage} />
       <Route exact path="/tv/discovertv" component={TvPage} />
       <Route path="/tv/:id" component={TvDetailPage} />
       <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />

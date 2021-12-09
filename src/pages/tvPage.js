@@ -3,6 +3,8 @@ import PageTemplate from "../components/templateTvListPage";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getTVShows} from '../api/tmdb-api'
+import AddToTvFavouritesIcon from '../components/cardIcons/addToTvFavourites'
+
 
 
 const TvPage = (props) => {
@@ -17,11 +19,17 @@ const TvPage = (props) => {
   }  
   const tvs = data.results;
 
+    // Redundant, but necessary to avoid app crashing.
+    const favorites = tvs.filter(m => m.favorite)
+    localStorage.setItem('tvfavorites', JSON.stringify(favorites))
 
   return (
     <PageTemplate
       title="Discover Tv Shows"
       tvs={tvs}
+      action={(tv) => {
+        return <AddToTvFavouritesIcon tv={tv} />
+      }}
     
     />    
   );
