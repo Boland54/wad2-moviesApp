@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import ReactDOM from "react-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
@@ -6,6 +6,7 @@ import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
+import TopRatedMoviesPage from "./pages/topRatedPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
@@ -29,6 +30,7 @@ const App = () => {
     <MoviesContextProvider>
             {" "}
       <Switch>
+      <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
       <Route exact path="/reviews/form" component={AddMovieReviewPage} />
       <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
       <Route path="/reviews/:id" component={MovieReviewPage} />

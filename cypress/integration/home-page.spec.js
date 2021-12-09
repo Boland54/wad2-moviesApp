@@ -61,14 +61,13 @@ describe("Home Page ", () => {
          cy.wrap($card).find("p").contains(matchingMovies[index].title);
        });
      });
-     it("should only display movies with xyz in the title", () => {
+
+ it("should display no movies when the search string is xyz", () => {
+        // Do a second test for certainty!
         let searchString = "xyz";
         let matchingMovies = filterByTitle(movies, searchString);
-        cy.get("#filled-search").clear().type(searchString); // Enter xyz in text box
-        cy.get(".MuiCardHeader-content").should(
-          "have.length",
-          matchingMovies.length
-        );
+        cy.get("#filled-search").clear().type(searchString); // Enter m in text box
+        cy.get(".MuiCardHeader-content").should("have.length", 0);
       });
     });
    })
@@ -108,4 +107,9 @@ describe("Home Page ", () => {
           });
         });
       });
+<<<<<<< HEAD
     });
+=======
+    });
+ 
+>>>>>>> tests-in-ci
