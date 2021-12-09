@@ -6,12 +6,12 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 const AddToTvFavoritesIcon = ({ tv }) => {
   const context = useContext(TvContext);
 
-  const handleAddToFavorites = (e) => {
+  const handleAddToTvFavorites = (e) => {
     e.preventDefault();
-    context.addToFavorites(tv);
+    context.addToTvFavorites(tv);
   };
   return (
-    <IconButton aria-label="add to favorites" onClick={handleAddToFavorites}>
+    <IconButton aria-label="add to Tv Show favorites" onClick={handleAddToTvFavorites}>
       <FavoriteIcon color="primary" fontSize="large" />
     </IconButton>
   );

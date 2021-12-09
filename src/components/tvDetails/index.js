@@ -7,10 +7,8 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-//import { Link } from "react-router-dom";
 import TvIcon from '@material-ui/icons/Tv';
-//import Drawer from "@material-ui/core/Drawer";
-//import MovieReviews from "../movieReviews"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 const TvDetails = ( {tv}) => {
   const classes = useStyles();
- // const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <>
@@ -81,15 +78,11 @@ const TvDetails = ( {tv}) => {
       <Fab
         color="secondary"
         variant="extended"
-       // onClick={() =>setDrawerOpen(true)}
         className={classes.fab}
       >
         <NavigationIcon />
         Reviews
       </Fab>
-      {/* <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews tv={tv} />
-      </Drawer> */}
       </>
   );
 };
