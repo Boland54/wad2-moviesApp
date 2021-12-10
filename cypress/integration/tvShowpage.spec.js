@@ -1,4 +1,4 @@
-let tvs;    // List of movies from TMDB
+let tvs;    // List of movies from TMDB Api
 
 // Utility functions
 const filterByTitle = (tvList, string) =>

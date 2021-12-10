@@ -1,6 +1,5 @@
-let tvId = 2778; // Wheel Of Fortune
-let tv;
-let reviews;
+let tvId = 90462; // ID for chucky
+let tvShow;
 
 describe("Tv Details Page", () => {
   before(() => {
@@ -11,26 +10,26 @@ describe("Tv Details Page", () => {
     )
       .its("body")
       .then((tvDetails) => {
-        tv = tvDetails;
+        tvShow = tvDetails;
         return tvDetails.id;
       });
   });
   beforeEach(() => {
-    cy.visit(`/tv/${tv.id}`);
+    cy.visit(`/tv/${tvShow.id}`);
   });
   describe("Base tests", () => {
     it("should display movie title in the page header", () => {
-      cy.get("h3").contains(tv.name);
+      cy.get("h3").contains(tvShow.name);
     });
 
 
     it("should display the tvshow's details", () => {
         cy.get("h3").contains("Overview");
-        cy.get("h3").next().contains(tv.overview);
+        cy.get("h3").next().contains(tvShow.overview);
         cy.get("ul")
           .eq(1)
           .within(() => {
-            const genreChips = tv.genres.map((g) => g.name);
+            const genreChips = tvShow.genres.map((g) => g.name);
             genreChips.unshift("Genres");
             cy.get("span").each(($card, index) => {
               cy.wrap($card).contains(genreChips[index]);
