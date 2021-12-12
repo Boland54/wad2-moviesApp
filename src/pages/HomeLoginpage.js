@@ -43,7 +43,7 @@ export default function Homepage() {
         <ListItem>Google Sign in</ListItem>
         <ListItem>Forgot Password</ListItem>
         <ListItem>Custom Reset password page</ListItem>
-        <ListItem>Protected routes</ListItem>
+        <ListItem>Routes</ListItem>
         <ListItem>
           <Code fontSize='inherit'> Redirect TO</Code> or Back (keeping the
           state)
