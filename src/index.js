@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import ReactDOM from "react-dom";
-import HomePage from "./pages/homePage";
+import HomePage from "./pages/HomeLoginpage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
@@ -14,7 +14,14 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import TvDetailPage from "./pages/tvDetailsPage";
 import TvPage from './pages/tvPage';
 import FavoriteTvShowPage from "./pages/favoriteTvShowPage"; // NEW
-
+import AuthContextProvider from "./contexts/AuthContext";
+import HomeLoginPage from './pages/HomeLoginpage'
+import Loginpage from "./pages/LoginPage";
+import Registerpage from "./pages/Registerpage";
+import Profilepage from "./pages/Profilepage";
+import TestPage from "./pages/TestPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 
 
@@ -30,12 +37,27 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
+    <AuthContextProvider>
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
     <SiteHeader />      {/* New Header  */}
     <MoviesContextProvider>
             {" "}
       <Switch>
+          <Route exact path='/login' component={Loginpage} />
+          <Route exact path='/register' component={Registerpage} />
+          <Route exact path='/profile' component={Profilepage} />
+          <Route exact path='/test' component={TestPage} />
+          <Route
+            exact
+            path='/forgot-password'
+            component={ForgotPasswordPage}
+          />
+          <Route
+            exact
+            path='/reset-password'
+            component={ResetPasswordPage}
+          />
       <Route exact path="/tv/favorites" component={FavoriteTvShowPage} />
       <Route exact path="/tv/discovertv" component={TvPage} />
       <Route path="/tv/:id" component={TvDetailPage} />
@@ -45,13 +67,15 @@ const App = () => {
       <Route path="/reviews/:id" component={MovieReviewPage} />
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
         <Route path="/movies/:id" component={MoviePage} />
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/movies/discover" component={HomePage} />
+        <Route exact path="/" component={HomeLoginPage} />
         <Redirect from="*" to="/" />
       </Switch>
       </MoviesContextProvider>
     </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+    </AuthContextProvider>
   );
 };
 
