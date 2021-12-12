@@ -14,4 +14,15 @@ Features.
 - Register - adds to google firebase console
 - Reset password - email sent to your own email
 
+API Endpoints
+/login
+/movies/favorites
+/movies/trending
+/movies/upcoming
+/tv/discovertv
+/register
+/forgot-password
+
+UI:
+All pictures are in the imageRM folder of my User Interface.
 
