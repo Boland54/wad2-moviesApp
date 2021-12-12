@@ -59,7 +59,7 @@ const App = () => {
             component={ResetPasswordPage}
           />
                       <Route exact path="/movies/trending" component={TrendingPage} />
-      <Route exact path="/show/favoritetv" component={FavoriteTvShowPage} />
+      <Route exact path="/tv/favoritetv" component={FavoriteTvShowPage} />
       <Route exact path="/tv/discovertv" component={TvPage} />
       <Route path="/tv/:id" component={TvDetailPage} />
       <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
