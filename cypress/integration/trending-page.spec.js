@@ -7,11 +7,12 @@ const filterByTitle = (movieList, string) =>
 const filterByGenre = (movieList, genreId) =>
   movieList.filter((m) => m.genre_ids.includes(genreId));
 
-describe("Home Page ", () => {
+
+describe("Trending Movies ", () => {
   before(() => {
     // Get movies from TMDB and store in movies variable.
     cy.request(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${Cypress.env(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${Cypress.env(
         "TMDB_KEY"
       )}&language=en-US&include_adult=false&include_video=false&page=1`
     )
@@ -21,14 +22,14 @@ describe("Home Page ", () => {
       })
   })
   beforeEach(() => {
-    cy.visit("/")
+    cy.visit("/movies/trending")
   });
 
  
   
     describe("Base test", () => {
       it("displays page header", () => {
-        cy.get("h3").contains("Discover Movies");
+        cy.get("h3").contains("Trending Movies");
         cy.get("h1").contains("Filter the movies");
       });
     });
@@ -108,4 +109,3 @@ describe("Home Page ", () => {
         });
       });
     });
- 
