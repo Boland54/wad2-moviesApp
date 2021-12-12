@@ -8,9 +8,8 @@ import {
   OrderedList,
 } from '@chakra-ui/react'
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Layout } from '../components/Layout'
-import { useAuth } from '../contexts/AuthContext'
 
 export default function Homepage() {
   return (

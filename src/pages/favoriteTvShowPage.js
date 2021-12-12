@@ -1,30 +1,30 @@
 import React, { useContext } from "react";
 import PageTemplate from "../components/templateTvListPage";
-import { MoviesContext } from "../contexts/moviesContext";
+import { TvContext } from "../contexts/tvContext";
 import { useQueries } from "react-query";
 import { getTVShows } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromTvFavorites from "../components/cardIcons/removeFromTvFavourites";
 
 const FavoriteTvShowPage = () => {
-  const {tvFavorites: showsIds } = useContext(MoviesContext);
+  const {favoritetv: showsIds } = useContext(TvContext);
 
   // Create an array of queries and run in parallel.
-  const favoriteShowQueries = useQueries(
+  const tvfavoriteShowQueries = useQueries(
     showsIds.map((showsId) => {
       return {
-        queryKey: ["shows", { id: showsId }],
+        queryKey: ["show", { id: showsId }],
         queryFn: getTVShows,
       };
     })
   );
   // Check if any of the parallel queries is still loading.
-  const isLoading = favoriteShowQueries.find((s) => s.isLoading === true);
+  const isLoading = tvfavoriteShowQueries.find((s) => s.isLoading === true);
 
   if (isLoading) {
     return <Spinner />;
   }
-  const shows = favoriteShowQueries.map((q) => q.data);
+  const shows = tvfavoriteShowQueries.map((q) => q.data);
 
 
   return (

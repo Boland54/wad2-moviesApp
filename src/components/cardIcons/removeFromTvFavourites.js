@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { MoviesContext } from "../../contexts/moviesContext";
+import { TvContext } from "../../contexts/tvContext";
 
 const RemoveFromTvFavoritesIcon = ({ show }) => {
-  const context = useContext(MoviesContext);
+  const context = useContext(TvContext);
 
   const handleRemoveFromTvFavorites = (s) => {
     s.preventDefault();
@@ -12,7 +12,7 @@ const RemoveFromTvFavoritesIcon = ({ show }) => {
   };
   return (
     <IconButton
-      aria-label="remove from favorites"
+      aria-label="remove from tv show favorites"
       onClick={handleRemoveFromTvFavorites}
     >
       <DeleteIcon color="primary" fontSize="large" />

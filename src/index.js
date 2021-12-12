@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import ReactDOM from "react-dom";
-import HomePage from "./pages/homePage";
+import TrendingPage from "./pages/trendingPage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
@@ -58,7 +58,8 @@ const App = () => {
             path='/reset-password'
             component={ResetPasswordPage}
           />
-      <Route exact path="/tv/favorites" component={FavoriteTvShowPage} />
+                      <Route exact path="/movies/trending" component={TrendingPage} />
+      <Route exact path="/show/favoritetv" component={FavoriteTvShowPage} />
       <Route exact path="/tv/discovertv" component={TvPage} />
       <Route path="/tv/:id" component={TvDetailPage} />
       <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
@@ -67,7 +68,6 @@ const App = () => {
       <Route path="/reviews/:id" component={MovieReviewPage} />
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
         <Route path="/movies/:id" component={MoviePage} />
-        <Route path="/movies/all" component={HomePage} />
         <Route exact path="/" component={HomeLoginPage} />
         <Redirect from="*" to="/" />
       </Switch>

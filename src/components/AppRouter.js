@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import ForgotPasswordPage from '../pages/ForgotPasswordPage'
-import Homepage from '../pages/Homepage'
+import Homepage from '../pages/HomeLoginpage'
+import Home from '../pages/trendingPage'
 import Loginpage from '../pages/Loginpage'
 import NotfoundPage from '../pages/NotfoundPage'
 import Profilepage from '../pages/Profilepage'
@@ -23,6 +24,7 @@ export default function AppRouter(props) {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <ProtectedRoute exact path='/login' component={Loginpage} />
+          <ProtectedRoute exact path='/home' component={Home} />
           <ProtectedRoute exact path='/register' component={Registerpage} />
           <ProtectedRoute exact path='/profile' component={Profilepage} />
           <ProtectedRoute exact path='/test' component={TestPage} />

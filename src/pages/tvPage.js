@@ -8,7 +8,7 @@ import AddToTvFavouritesIcon from '../components/cardIcons/addToTvFavourites'
 
 
 const TvPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('tv', getTVShows)
+  const {  data, error, isLoading, isError }  = useQuery('favoritetv', getTVShows)
 
   if (isLoading) {
     return <Spinner />
@@ -19,6 +19,9 @@ const TvPage = (props) => {
   }  
   const tvs = data.results;
 
+    // Redundant, but necessary to avoid app crashing.
+    const favoritetv = tvs.filter(m => m.favorite)
+    localStorage.setItem('favoritetv', JSON.stringify(favoritetv))
 
   return (
     <PageTemplate
