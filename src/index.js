@@ -13,9 +13,13 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import TvDetailPage from "./pages/tvDetailsPage";
 import TvPage from './pages/tvPage';
+import HomePage from "./pages/homePage";
 import FavoriteTvShowPage from "./pages/favoriteTvShowPage"; // NEW
-import AuthContextProvider from "./contexts/AuthContext";
-
+import LoginPage from "./pages/LoginPage";
+import AuthProvider from "./contexts/authContext";
+import SignUpPage from "./pages/signUpPage";
+import PrivateRoute from "./privateRoute";
+import AuthHeader from "./authHeader"
 
 
 const queryClient = new QueryClient({
@@ -30,31 +34,36 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
-    <AuthContextProvider>
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-    <SiteHeader />      {/* New Header  */}
+    <AuthProvider>
+      <SiteHeader />
+      <AuthHeader />     {/* New Header  */}
     <MoviesContextProvider>
             {" "}
       <Switch>
-     <Route exact path="/movies/trending" component={TrendingPage} />
-      <Route exact path="/tv/favoritetv" component={FavoriteTvShowPage} />
-      <Route exact path="/tv/discovertv" component={TvPage} />
-      <Route path="/tv/:id" component={TvDetailPage} />
-      <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
-      <Route exact path="/reviews/form" component={AddMovieReviewPage} />
-      <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-      <Route path="/reviews/:id" component={MovieReviewPage} />
+     <PrivateRoute exact path="/movies/trending" component={TrendingPage} />
+      <PrivateRoute exact path="/tv/favoritetv" component={FavoriteTvShowPage} />
+      <PrivateRoute exact path="/tv/discovertv" component={TvPage} />
+      <PrivateRoute path="/tv/:id" component={TvDetailPage} />
+      <PrivateRoute exact path="/movies/top-rated" component={TopRatedMoviesPage} />
+      <PrivateRoute exact path="/reviews/form" component={AddMovieReviewPage} />
+      <Route exact path="/login" component={LoginPage} /> 
+        <Route exact path="/SignUP" component={SignUpPage} /> 
+    <PrivateRoute exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+    <PrivateRoute exact path="/" component={HomePage} /> 
+      <PrivateRoute path="/reviews/:id" component={MovieReviewPage} />
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
         <Route path="/movies/:id" component={MoviePage} />
         <Route exact path="/" component={FavoriteMoviesPage} />
-        <Redirect from="*" to="/" />
+        <Redirect from="*" to="/login" />
       </Switch>
       </MoviesContextProvider>
-    </BrowserRouter>
+      </AuthProvider>
+      </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-    </AuthContextProvider>
+
   );
 };
 

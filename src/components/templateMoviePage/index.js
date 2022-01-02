@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import { getMovieImages } from "../../api/tmdb-api";
-import img from '../../images/back2.jpeg'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +49,7 @@ const TemplateMoviePage = ({ movie, children }) => {
               {images.map((image) => (
                 <GridListTile key={image.file_path} className={classes.gridListTile} cols={1}>
                   <img
-                    src={img}
+                  src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
                     alt={image.poster_path}
                   />
                 </GridListTile>

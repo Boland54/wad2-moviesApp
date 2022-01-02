@@ -25,15 +25,18 @@ const SiteHeader = ( { history }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));  //true of false
+  const [login, setLogin] = useState(false);  
 
   const menuOptions = [
+    { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
-    { label: "Trending Movies", path: "/movies/trending" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Top Rated", path: "/movies/top-rated" },
-    { label: "Tv Shows", path: "/tv/discovertv" },
-    { label: "Favorite Tv Shows", path: "/show/favoritetv" },
+    { label: "Upcoming", path: "/upcoming" },
+    { label: "Trending Movies", path: "/trending" },
+    { label: "Top Rated", path: "/top-rated" },
+    { label: "TV Shows", path: "/tv/discovertv" },
+    { label: "Favourite Tv Shows", path: "/show/favoritetv" },
+    { label: "login", path: "/login" }
 
   ];
 
@@ -45,6 +48,14 @@ const SiteHeader = ( { history }) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleLogin =   () => {
+    setLogin(!login);
+     }
+ 
+   var buttonText ="Login"
+   if (login) { buttonText = "Logout" }
+   
+
   return (
     <>
       <AppBar position="fixed" color="secondary">
@@ -55,6 +66,10 @@ const SiteHeader = ( { history }) => {
           <Typography variant="h6" className={classes.title}>
             All you ever wanted to know about Movies!
           </Typography>
+
+          {/* <button onClick={handleLogin} color="inherit">  {buttonText}
+                  </button> */}
+
             {isMobile ? (
               <>
                 <IconButton
