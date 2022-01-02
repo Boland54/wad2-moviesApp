@@ -1,9 +1,7 @@
+
 export const getUpcomingMovies = () => {
     return fetch(
-       '/api/movies/tmdb/upcoming',{headers: {
-         'Authorization': window.localStorage.getItem('token')
-      }
-    }
+       '/api/movies/tmdb/upcoming'
     ).then(res => res.json())
     .then(res => console.log(res));
   };
@@ -11,20 +9,14 @@ export const getUpcomingMovies = () => {
 
   export const getTrendingMovies = () => {
     return fetch(
-       '/api/movies/tmdb/trending',{headers: {
-         'Authorization': window.localStorage.getItem('token')
-      }
-    }
+       '/api/movies/tmdb/trending'
     ).then(res => res.json())
     .then(res => console.log(res));
   };
 
   export const getTopRatedMovies = () => {
     return fetch(
-       '/api/movies/tmdb/toprated',{headers: {
-         'Authorization': window.localStorage.getItem('token')
-      }
-    }
+       '/api/movies/tmdb/toprated'
     ).then(res => res.json())
     .then(res => console.log(res));
   };

@@ -28,7 +28,6 @@ const SiteHeader = ( { history }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const menuOptions = [
-    { label: "Login", path: "/login" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Trending Movies", path: "/movies/trending" },
     { label: "Upcoming", path: "/movies/upcoming" },
