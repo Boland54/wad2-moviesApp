@@ -42,15 +42,15 @@ const App = () => {
     <MoviesContextProvider>
             {" "}
       <Switch>
-     <PrivateRoute exact path="/movies/trending" component={TrendingPage} />
+     <PrivateRoute exact path="/trending" component={TrendingPage} />
       <PrivateRoute exact path="/tv/favoritetv" component={FavoriteTvShowPage} />
       <PrivateRoute exact path="/tv/discovertv" component={TvPage} />
       <PrivateRoute path="/tv/:id" component={TvDetailPage} />
-      <PrivateRoute exact path="/movies/top-rated" component={TopRatedMoviesPage} />
+      <PrivateRoute exact path="/toprated" component={TopRatedMoviesPage} />
       <PrivateRoute exact path="/reviews/form" component={AddMovieReviewPage} />
       <Route exact path="/login" component={LoginPage} /> 
         <Route exact path="/SignUP" component={SignUpPage} /> 
-    <PrivateRoute exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+    <PrivateRoute exact path="/upcoming" component={UpcomingMoviesPage} />
     <PrivateRoute exact path="/" component={HomePage} /> 
       <PrivateRoute path="/reviews/:id" component={MovieReviewPage} />
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
