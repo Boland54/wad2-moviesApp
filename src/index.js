@@ -6,14 +6,12 @@ import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
-import TopRatedMoviesPage from "./pages/topRatedPage";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import TvDetailPage from "./pages/tvDetailsPage";
 import TvPage from './pages/tvPage';
-import HomePage from "./pages/homePage";
 import FavoriteTvShowPage from "./pages/favoriteTvShowPage"; // NEW
 import LoginPage from "./pages/LoginPage";
 import AuthProvider from "./contexts/authContext";
@@ -44,14 +42,12 @@ const App = () => {
       <Switch>
      <PrivateRoute exact path="/trending" component={TrendingPage} />
       <PrivateRoute exact path="/tv/favoritetv" component={FavoriteTvShowPage} />
-      <PrivateRoute exact path="/tv/discovertv" component={TvPage} />
+      <PrivateRoute exact path="/discovertv" component={TvPage} />
       <PrivateRoute path="/tv/:id" component={TvDetailPage} />
-      <PrivateRoute exact path="/toprated" component={TopRatedMoviesPage} />
       <PrivateRoute exact path="/reviews/form" component={AddMovieReviewPage} />
       <Route exact path="/login" component={LoginPage} /> 
         <Route exact path="/SignUP" component={SignUpPage} /> 
     <PrivateRoute exact path="/upcoming" component={UpcomingMoviesPage} />
-    <PrivateRoute exact path="/" component={HomePage} /> 
       <PrivateRoute path="/reviews/:id" component={MovieReviewPage} />
         <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
         <Route path="/movies/:id" component={MoviePage} />

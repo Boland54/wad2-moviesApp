@@ -29,12 +29,10 @@ const SiteHeader = ( { history }) => {
   const [login, setLogin] = useState(false);  
 
   const menuOptions = [
-    { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/upcoming" },
     { label: "Trending Movies", path: "/trending" },
-    { label: "Top Rated", path: "/toprated" },
-    { label: "TV Shows", path: "/tv/discovertv" },
+    { label: "TV Shows", path: "/discovertv" },
     { label: "Favourite Tv Shows", path: "/show/favoritetv" },
     { label: "login", path: "/login" }
 

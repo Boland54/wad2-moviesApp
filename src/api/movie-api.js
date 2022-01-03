@@ -48,9 +48,9 @@ export const getTrendingMovies = () => {
             ).then(res => res.json());
         };
 
-  export const getTopRatedMovies = () => {
+  export const getTvShows = () => {
     return fetch(
-       '/api/movies/tmdb/toprated'
+       '/api/movies/tmdb/tvShows'
     ).then(res => res.json())
     .then(res => console.log(res));
   };
