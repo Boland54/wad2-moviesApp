@@ -26,21 +26,21 @@ const LoginPage = props => {
 
     <>
     
-      <h1><center>Please login to continue</center></h1>
-      <center><input id="username" placeholder="user name" onChange={e => {
+      <h1>Please login to continue</h1>
+      <input id="username" placeholder="user name" onChange={e => {
         setUserName(e.target.value);
-      }}></input></center><br />
-      <center><input id="password" type="password" placeholder="password" onChange={e => {
+      }}></input><br />
+      <input id="password" type="password" placeholder="password" onChange={e => {
         setPassword(e.target.value);
-      }}></input></center><br />
+      }}></input><br />
       {/* Login web form  */}
 
 
 
       
-      <center><button onClick={login} id="login-button">Log in</button></center>
-      <center><i><p>Not Registered?
-      <Link to="/signup">Sign Up!</Link></p></i></center>
+      <button onClick={login} id="login-button">Log in</button>
+      <p>Not Registered?
+      <Link to="/signup">Sign Up!</Link></p>
     </>
   );
 };

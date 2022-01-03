@@ -27,8 +27,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-storybook": "build-storybook -s public",
-    "start:ci": "start-server-and-test 'http-server ./build  -p 3000 -P http://localhost:3000?' 3000 'cypress run --browser chrome '"
-  },
+    "start:ci": "start-server-and-test 'http-server ./build  -p 3000 -P http://localhost:3000?' 3000 'cypress run --browser chrome '",
+    "server": "http-server ./build --port 3000 -P http://localhost:3000?"
+    },
   "eslintConfig": {
     "extends": "react-app",
     "overrides": [
@@ -56,5 +57,6 @@
     "@storybook/react": "^6.2.9",
     "cypress": "^8.7.0",
     "start-server-and-test": "^1.14.0"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
